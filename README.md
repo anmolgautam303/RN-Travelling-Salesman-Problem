@@ -13,3 +13,5 @@ yarn flow
 
 ## run tests
 yarn test
+
+![](demo.gif)
