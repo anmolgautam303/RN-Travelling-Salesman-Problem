@@ -7,20 +7,16 @@ import CustomGooglePlacesAutocomplete from './CustomGooglePlacesAutocomplete';
 import Destinations from './Destinations';
 import ShowPredictions from './ShowPredictions';
 
-const latitudeDelta= 0.0922;
-const longitudeDelta= 0.0421;
+const latitude = -36.852095;
+const longitude = 174.7631803;
+const latitudeDelta = 0.0922;
+const longitudeDelta = 0.0421;
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // region: {
-      //   latitude: -36.852095,
-      //   longitude: 174.7631803,
-      //   latitudeDelta: latitudeDelta,
-      //   longitudeDelta: longitudeDelta
-      // },
       locations: [],
       openSuggestionView: false
     };
@@ -29,6 +25,18 @@ export default class Home extends Component {
   componentDidMount() {
     this.checkForPermission();
   }
+
+  setRegionOnError = () => {
+    const region = {
+      latitude,
+      longitude,
+      latitudeDelta,
+      longitudeDelta
+    };
+
+    this.props.setCurrentLocation(region);
+  };
+
   getLocationAsync = async () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const region = {
@@ -38,10 +46,10 @@ export default class Home extends Component {
         longitudeDelta
       };
 
-      this.setState({ region });
       this.props.setCurrentLocation(region);
     }, (error) => {
       console.log(error);
+      this.setRegionOnError();
     }, {
       enableHighAccuracy: true,
       timeout: 20000,
@@ -58,6 +66,8 @@ export default class Home extends Component {
         this.getLocationAsync();
       }
       else {
+        this.setRegionOnError();
+
         Alert.alert(
             'Error',
             'Permission to access location was denied',
@@ -77,6 +87,10 @@ export default class Home extends Component {
 
   render() {
     const { predictions, currentLocation } = this.props;
+
+    if (!currentLocation.latitude) {
+      return null;
+    }
 
     return (
       <View style={styles.wrapper}>
