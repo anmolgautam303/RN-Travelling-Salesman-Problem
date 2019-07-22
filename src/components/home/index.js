@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, View, Alert, PermissionsAndroid, Platform } from 'react-native';
+import {StyleSheet, View, Alert, PermissionsAndroid, Platform, ActivityIndicator } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -102,7 +102,9 @@ export default class Home extends Component<Props, State> {
     const { predictions, currentLocation } = this.props;
 
     if (!currentLocation.latitude) {
-      return null;
+      return (
+        <ActivityIndicator size="large" color="#4C4CFF" style={styles.loading}/>
+      );
     }
 
     return (
@@ -163,6 +165,9 @@ export default class Home extends Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
+  loading: {
+    flex: 1
+  },
   wrapper: {
     position: 'relative',
     flex: 1,

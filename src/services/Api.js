@@ -1,6 +1,4 @@
 import apisauce from 'apisauce';
-
-// const GOOGLE_API_KEY = 'AIzaSyAzABPCPI2H-cWRvL5Hb36N44MsD8K7Vc4';
 import Config from "react-native-config";
 
 const create = (baseURL = 'http://localhost:3000') => {

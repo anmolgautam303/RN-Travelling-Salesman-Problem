@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Alert, Dimensions, SafeAreaView } from 'react-native';
+import {StyleSheet, Text, View, Alert, Dimensions, SafeAreaView, ActivityIndicator } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const { width, height } = Dimensions.get('window');
@@ -99,7 +99,9 @@ export default class Directions extends Component {
 
   render() {
     if (!this.state.coordinates) {
-      return null;
+      return (
+        <ActivityIndicator size="large" color="#4C4CFF" style={styles.loading}/>
+      );
     }
 
     const { region, distance, duration, coordinates } = this.state;
@@ -156,6 +158,9 @@ export default class Directions extends Component {
 }
 
 const styles = StyleSheet.create({
+  loading: {
+    flex: 1
+  },
   map: {
     flex: 1
   },
