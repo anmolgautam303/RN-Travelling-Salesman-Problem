@@ -1,22 +1,26 @@
+// @flow
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default class FullScreenMap extends Component {
-  constructor(props) {
-    super(props);
+type Props = {
+  region: Object,
+  navigation: Object,
+  currentLocation: Object,
+  setCurrentLocation: Function
+};
 
-    this.state = {
-      region: props.currentLocation
-    };
-  }
+type State = {
+  region: Object
+};
 
-  toggleOpenSuggestionView = (openSuggestionView = false) => {
-    this.setState({ openSuggestionView });
+export default class FullScreenMap extends Component<Props, State> {
+  state = {
+    region: this.props.currentLocation
   };
 
-  onRegionChange = region => {
+  onRegionChange = (region: Object) => {
     this.setState({
       region
     });

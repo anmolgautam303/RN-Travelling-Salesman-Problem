@@ -1,14 +1,20 @@
+// @flow
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, View, Text, TouchableOpacity } from 'react-native';
 import SwipeOut from 'react-native-swipeout';
 import Feather from 'react-native-vector-icons/Feather';
 
-class CustomGooglePlacesAutocomplete extends Component {
-  state = {
-    searchText: ''
-  };
+type Props = {
+  navigation: Object,
+  destinations: Array<any>,
+  removeDestination: Function,
+  // resetPredictions: Function,
+  // getCoordinate: Function,
+  // predictions: Array<any>
+};
 
-  renderRow(row) {
+class CustomGooglePlacesAutocomplete extends Component<Props> {
+  renderRow(row: Object) {
     let swipeOutButton = [{
       text: 'Delete',
       type: 'delete',

@@ -1,11 +1,23 @@
+// @flow
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, View, Text, TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PushNotification from 'react-native-push-notification'
 // import { Notifications } from "expo";
 
-class CustomGooglePlacesAutocomplete extends Component {
-  scheduleNotification = async (notifText) => {
+type Props = {
+  setSelectedDestination: Function,
+  resetPredictions: Function,
+  getCoordinate: Function,
+  predictions: Array<any>
+};
+
+type State = {
+  notifText: string
+};
+
+class CustomGooglePlacesAutocomplete extends Component<Props, State> {
+  scheduleNotification = async (notifText: string) => {
     PushNotification.cancelAllLocalNotifications();
 
     PushNotification.localNotificationSchedule({

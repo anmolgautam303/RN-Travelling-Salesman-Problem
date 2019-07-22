@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { StyleSheet, View, Alert, PermissionsAndroid, Platform } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
@@ -12,15 +13,27 @@ const longitude = 174.7631803;
 const latitudeDelta = 0.0922;
 const longitudeDelta = 0.0421;
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
+type Props = {
+  navigation: Object,
+  currentLocation: Object,
+  setCurrentLocation: Function,
+  predictions: Array<any>,
+  setSelectedDestination: Function,
+  resetPredictions: Function,
+  getCoordinate: Function,
+  destinations: Array<any>,
+  removeDestination: Function,
+  fetchAutoComplete: Function
+};
 
-    this.state = {
-      locations: [],
-      openSuggestionView: false
-    };
-  }
+type State = {
+  openSuggestionView: boolean
+};
+
+export default class Home extends Component<Props, State> {
+  state = {
+    openSuggestionView: false
+  };
 
   componentDidMount() {
     this.checkForPermission();
@@ -81,7 +94,7 @@ export default class Home extends Component {
     }
   };
 
-  toggleOpenSuggestionView = (openSuggestionView = false) => {
+  toggleOpenSuggestionView = (openSuggestionView: boolean = false) => {
     this.setState({ openSuggestionView });
   };
 
@@ -123,10 +136,14 @@ export default class Home extends Component {
 
         <Destinations
           {...this.props}
+          destinations={this.props.destinations}
+          removeDestination={this.props.removeDestination}
         />
         <CustomGooglePlacesAutocomplete
           {...this.props}
           toggleOpenSuggestionView={this.toggleOpenSuggestionView}
+          fetchAutoComplete={this.props.fetchAutoComplete}
+          resetPredictions={this.props.resetPredictions}
         />
         {
           predictions.length > 0
@@ -134,6 +151,9 @@ export default class Home extends Component {
               <ShowPredictions
                 {...this.props}
                 toggleOpenSuggestionView={this.toggleOpenSuggestionView}
+                setSelectedDestination={this.props.setSelectedDestination}
+                resetPredictions={this.props.resetPredictions}
+                getCoordinate={this.props.getCoordinate}
               />
           )
         }

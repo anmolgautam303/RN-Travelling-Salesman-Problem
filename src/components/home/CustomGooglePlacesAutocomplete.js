@@ -3,24 +3,33 @@ import { StyleSheet, SafeAreaView, TextInput, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { debounce } from 'lodash';
 
-class CustomGooglePlacesAutocomplete extends Component {
-  constructor(props) {
-    super(props);
+type Props = {
+  toggleOpenSuggestionView: Function,
+  fetchAutoComplete: Function,
+  predictions: Array<any>,
+  resetPredictions: Function,
+};
 
-    this.state = {
-      searchString: ''
-    };
+type State = {
+  searchString: string
+};
 
+class CustomGooglePlacesAutocomplete extends Component<Props, State> {
+  state = {
+    searchString: ''
+  };
+
+  componentDidMount() {
     this.debouncedCallFetchAutoCompletefunc = debounce(this.callFetchAutoCompleteFunc, 1000);
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentWillUpdate(nextProps: Object, nextState: Object) {
     if (nextState.searchString.length > 1 && nextState.searchString !== this.state.searchString) {
       this.debouncedCallFetchAutoCompletefunc(nextState.searchString);
     }
   }
 
-  callFetchAutoCompleteFunc(searchString) {
+  callFetchAutoCompleteFunc(searchString: string) {
     this.props.fetchAutoComplete(searchString);
   };
 
