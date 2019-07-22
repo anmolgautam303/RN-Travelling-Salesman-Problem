@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "NO"
+      parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <PreActions>
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.production&quot; &gt; /tmp/envfile&#10;">
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.development&quot; &gt; /tmp/envfile&#10;">
             </ActionContent>
          </ExecutionAction>
       </PreActions>
@@ -23,37 +23,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83CBBA2D1A601D0E00E9B192"
-               BuildableName = "libReact.a"
-               BlueprintName = "React"
-               ReferencedContainer = "container:../node_modules/react-native/React/React.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "RushApp.app"
-               BlueprintName = "RushApp"
-               ReferencedContainer = "container:RushApp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "RushAppTests.xctest"
-               BlueprintName = "RushAppTests"
+               BlueprintIdentifier = "BC60293D22E5F35A0064D1A1"
+               BuildableName = "RushAppDEV.app"
+               BlueprintName = "RushAppDEV"
                ReferencedContainer = "container:RushApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -65,23 +37,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "RushAppTests.xctest"
-               BlueprintName = "RushAppTests"
-               ReferencedContainer = "container:RushApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "RushApp.app"
-            BlueprintName = "RushApp"
+            BlueprintIdentifier = "BC60293D22E5F35A0064D1A1"
+            BuildableName = "RushAppDEV.app"
+            BlueprintName = "RushAppDEV"
             ReferencedContainer = "container:RushApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -102,9 +64,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "RushApp.app"
-            BlueprintName = "RushApp"
+            BlueprintIdentifier = "BC60293D22E5F35A0064D1A1"
+            BuildableName = "RushAppDEV.app"
+            BlueprintName = "RushAppDEV"
             ReferencedContainer = "container:RushApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -121,9 +83,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "RushApp.app"
-            BlueprintName = "RushApp"
+            BlueprintIdentifier = "BC60293D22E5F35A0064D1A1"
+            BuildableName = "RushAppDEV.app"
+            BlueprintName = "RushAppDEV"
             ReferencedContainer = "container:RushApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
