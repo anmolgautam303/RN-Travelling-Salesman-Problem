@@ -1,44 +1,19 @@
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, View, Text, TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import PushNotification from 'react-native-push-notification'
 // import { Notifications } from "expo";
-// import * as Permissions from 'expo-permissions'
 
 class CustomGooglePlacesAutocomplete extends Component {
-  componentDidMount () {
-    // this.askPermissions();
-  }
+  scheduleNotification = async (notifText) => {
+    PushNotification.cancelAllLocalNotifications();
 
-  // askPermissions = async () => {
-  //   const { status: existingStatus } = await Permissions.getAsync(
-  //     Permissions.NOTIFICATIONS
-  //   );
-  //   let finalStatus = existingStatus;
-  //   if (existingStatus !== "granted") {
-  //     const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-  //     finalStatus = status;
-  //   }
-  //   if (finalStatus !== "granted") {
-  //     return false;
-  //   }
-  //   return true;
-  // };
-
-  // scheduleNotification = async (notifText) => {
-  //   Notifications.cancelAllScheduledNotificationsAsync();
-  //
-  //   let notificationId = Notifications.scheduleLocalNotificationAsync(
-  //       {
-  //         title: `Last address added: ${notifText}`,
-  //         body: `Time: ${new Date().toLocaleTimeString()}`
-  //       },
-  //       {
-  //         repeat: "minute",
-  //         time: new Date().getTime() + 500000
-  //       }
-  //   );
-  //   console.log(notificationId);
-  // };
+    PushNotification.localNotificationSchedule({
+      title: `Last address added: ${notifText}`,
+      message: `Time: ${new Date().toLocaleTimeString()}`,
+      date: new Date(Date.now() + (500 * 1000)) // in 5 min
+    });
+  };
 
   render () {
     const {
@@ -61,7 +36,7 @@ class CustomGooglePlacesAutocomplete extends Component {
                 setSelectedDestination(row.item);
                 resetPredictions();
                 getCoordinate(row.item.place_id);
-                // this.scheduleNotification(row.item.structured_formatting.main_text);
+                this.scheduleNotification(row.item.structured_formatting.main_text);
               }}
             >
               <View style={styles.addressContainer}>

@@ -15,6 +15,12 @@ export default class Home extends Component {
     super(props);
 
     this.state = {
+      // region: {
+      //   latitude: -36.852095,
+      //   longitude: 174.7631803,
+      //   latitudeDelta: latitudeDelta,
+      //   longitudeDelta: longitudeDelta
+      // },
       locations: [],
       openSuggestionView: false
     };
