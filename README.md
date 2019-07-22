@@ -15,4 +15,4 @@ yarn flow
 yarn test
 
 ## Demo
-![](demo.gif)
+![](demo.MP4)
