@@ -32,6 +32,7 @@ export default class Home extends Component {
         longitudeDelta
       };
 
+      this.setState({ region });
       this.props.setCurrentLocation(region);
     }, (error) => {
       console.log(error);
