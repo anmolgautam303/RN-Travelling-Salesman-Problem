@@ -10,6 +10,7 @@ const api = Api.create();
 export function* fetchAutoCompleteResults(action) {
   try {
     const response = yield call(api.callAutoCompleteResultsApi, action.payload);
+    console.log('callAutoCompleteResultsApi', response);
     if(response.ok) {
       yield put({ type: SET_PREDICTIONS, payload: response.data.predictions });
     } else {
