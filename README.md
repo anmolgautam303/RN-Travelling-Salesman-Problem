@@ -13,6 +13,3 @@ yarn flow
 
 ## run tests
 yarn test
-
-## Demo
-![](demo.MP4)
